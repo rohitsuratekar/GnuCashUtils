@@ -9,6 +9,8 @@ from piecash import open_book, Account, Commodity, Book, Transaction, Price, Spl
 
 from config.paths import NSE_SYMBOL_FILE
 
+pd.options.display.max_columns = None
+
 
 class _CommonProperties:
     def __init__(self, filename, **kwargs):
@@ -107,7 +109,7 @@ class GnuBook(_CommonProperties):
         )
         self.book.add(price)
 
-    def create_stocks_from_zerodha_export(self, filename):
+    def import_zerodha_holdings(self, filename):
         df = pd.read_csv(filename)
         coms = {}
         for c in self.commodities:
@@ -127,8 +129,3 @@ class GnuBook(_CommonProperties):
                     commodity=coms[key], currency=self.currency,
                     date=datetime.date.today(), value=f"{ltp}", type="last"
                 )
-
-    def run(self):
-        self.create_stocks_from_zerodha_export("/Users/dex/Downloads/holdings.csv")
-        # self._delete_all_stocks()
-        self.save()
