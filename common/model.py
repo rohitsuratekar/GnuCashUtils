@@ -110,6 +110,7 @@ class GnuBook(_CommonProperties):
         self.book.add(price)
 
     def import_zerodha_holdings(self, filename):
+        print(f"Loading holding information from {filename}")
         df = pd.read_csv(filename)
         coms = {}
         for c in self.commodities:
@@ -124,8 +125,10 @@ class GnuBook(_CommonProperties):
             key = f"{self.STOCK_KEY}:{sym}"
             if key not in coms:
                 self._create_stock(sym, cost, qt, ltp)
+                print(f"Created {key}")
             else:
                 Price(
                     commodity=coms[key], currency=self.currency,
                     date=datetime.date.today(), value=f"{ltp}", type="last"
                 )
+                print(f"Price updated for {key}")
