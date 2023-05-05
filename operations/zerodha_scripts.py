@@ -5,7 +5,7 @@ Scripts based on Zerodha data
 from common.model import GnuBook
 from operations.stocks_functions import add_stocks_to_book, add_bonds_to_book, update_last_traded_values
 
-FILE_SYMBOL_MAP = "/Users/dex/Documents/Rohit/PythonProjects/GnuCashUtils/data/symbol_mapping.csv"
+FILE_SYMBOL_MAP = "/Users/dex/Documents/Rohit/Softwares/PythonProjects/GnuCashUtils/data/symbol_mapping.csv"
 
 
 def add_to_new_book(gnu_file, stock_file):
