@@ -11,7 +11,7 @@ import requests
 URL_NSE_EQUITY = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 URL_NSE_REITS = "https://archives.nseindia.com/content/equities/REITS_L.csv"
 URL_MF_DATA = "https://www.amfiindia.com/spages/NAVAll.txt"
-FOLDER_DATA = "/Users/dex/Documents/Rohit/PythonProjects/GnuCashUtils/data"
+FOLDER_DATA = "/Users/dex/Documents/Rohit/Softwares/PythonProjects/GnuCashUtils/data"
 
 
 def _fetch_data(data_type: str) -> pd.DataFrame:
@@ -58,6 +58,7 @@ def get_mf_data():
     Path(f"{FOLDER_DATA}/MF").mkdir(parents=True, exist_ok=True)
     dt = f"{FOLDER_DATA}/MF/{dt}_NAV.csv"
     if os.path.exists(dt):
+        print(dt)
         df = pd.read_csv(dt)
         return df
 
